@@ -23,6 +23,8 @@ function DataTable() {
                 return data;
             } else if (data.fullName.toLowerCase().includes(search.toLowerCase())) {
                 return data;
+            } else {
+                return [];
             }
         });
 
@@ -48,33 +50,35 @@ function DataTable() {
         div className = "idTitle" >
         <
         p > Id < /p> <button onClick={() => onSort("id")}> ⬇️ </button > { " " } <
-        /div>{" "} <
-        /th>{" "} <
+        /div>{" "} < /
+        th > { " " } <
         th >
         <
         div className = "idTitle" >
         <
         p > First Name < /p>{" "} <
         button onClick = {
-            () => onSort("firstName") } > ⬇️ < /button>{" "} <
-        /div>{" "} <
+            () => onSort("firstName")
+        } > ⬇️ < /button>{" "} < /
+        div > { " " } <
         /th>{" "} <
         th >
         <
         div className = "idTitle" > { " " } <
         p > Second Name < /p>{" "} <
         button onClick = {
-            () => onSort("lastName") } > ⬇️ < /button>{" "} <
-        /div>{" "} <
+            () => onSort("lastName")
+        } > ⬇️ < /button>{" "} < /
+        div > { " " } <
         /th>{" "} <
         th > { " " } <
         div className = "idTitle" >
         <
         p > Age < /p> <button onClick={() => onSort("age")}> ⬇️ </button > { " " } <
-        /div>{" "} <
-        /th>{" "} <
-        th > Full Name < /th>{" "} <
-        /tr>{" "} {
+        /div>{" "} < /
+        th > { " " } <
+        th > Full Name < /th>{" "} < /
+        tr > { " " } {
             tableDataState.map(({ id, firstName, lastName, age, fullName }) => ( <
                 tr key = { id } >
                 <
@@ -88,8 +92,8 @@ function DataTable() {
                 /tr>
             ))
         } { " " } <
-        /table>{" "} <
-        /div>
+        /table>{" "} < /
+        div >
     );
 }
 
