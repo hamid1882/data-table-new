@@ -19,6 +19,7 @@ th {
 
 tr {
     border: 1px solid gray;
+    cursor: pointer;
 }
 
 th {
@@ -31,6 +32,11 @@ td {
 
 input {
     padding: 1em;
+}
+
+input[type='checkbox'] {
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .search-bar {
@@ -48,4 +54,28 @@ button {
     cursor: pointer;
     padding: 0.5em 1em;
     border-radius: 0.3em;
+}
+
+.selectedRow {
+    background-color: antiquewhite;
+}
+
+.row:hover {
+    background-color: rgb(168, 160, 150);
+}
+
+tfoot {
+    width: 100%;
+    position: relative;
+    right: 0
+}
+
+.table-footer {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    width: 100%;
+    background-color: aliceblue;
 }
