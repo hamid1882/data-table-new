@@ -11,15 +11,29 @@ function DataTable() {
             a[sortBy] > b[sortBy] ? -1 : 0
         );
 
-        console.log(sortedData);
-
         setTableDataState(sortedData);
+    };
+
+    const onSearch = (search) => {
+        console.log(search);
+        const filteredArr = tableData.filter((data) => {
+            if (data.firstName.toLowerCase().includes(search.toLowerCase())) {
+                return data;
+            } else if (data.lastName.toLowerCase().includes(search.toLowerCase())) {
+                return data;
+            } else if (data.fullName.toLowerCase().includes(search.toLowerCase())) {
+                return data;
+            }
+        });
+
+        setTableDataState(filteredArr);
     };
 
     return ( <
         div className = "table-container" >
         <
-        SearchBar / > { " " } <
+        SearchBar onSearch = { onSearch }
+        />{" "} <
         table >
         <
         tr >
