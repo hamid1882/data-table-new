@@ -107,7 +107,8 @@ function DataTable() {
         th >
         <
         input onChange = {
-            (e) => onSelectAll(e.target.checked) }
+            (e) => onSelectAll(e.target.checked)
+        }
         type = "checkbox" /
         >
         <
@@ -117,41 +118,44 @@ function DataTable() {
         div className = "idTitle" >
         <
         p > Id < /p> <button onClick={() => onSort("id")}> ⬇️ </button > { " " } <
-        /div>{" "} <
-        /th>{" "} <
+        /div>{" "} < /
+        th > { " " } <
         th >
         <
         div className = "idTitle" >
         <
         p > First Name < /p>{" "} <
         button onClick = {
-            () => onSort("firstName") } > ⬇️ < /button>{" "} <
-        /div>{" "} <
+            () => onSort("firstName")
+        } > ⬇️ < /button>{" "} < /
+        div > { " " } <
         /th>{" "} <
         th >
         <
         div className = "idTitle" > { " " } <
         p > Second Name < /p>{" "} <
         button onClick = {
-            () => onSort("lastName") } > ⬇️ < /button>{" "} <
-        /div>{" "} <
+            () => onSort("lastName")
+        } > ⬇️ < /button>{" "} < /
+        div > { " " } <
         /th>{" "} <
         th > { " " } <
         div className = "idTitle" >
         <
         p > Age < /p> <button onClick={() => onSort("age")}> ⬇️ </button > { " " } <
-        /div>{" "} <
-        /th>{" "} <
+        /div>{" "} < /
+        th > { " " } <
         th >
         <
         div className = "idTitle" >
         <
         p > Full Name < /p>{" "} <
         button onClick = {
-            () => onSort("fullName") } > ⬇️ < /button>{" "} <
-        /div>{" "} <
-        /th>{" "} <
-        /tr>{" "} <
+            () => onSort("fullName")
+        } > ⬇️ < /button>{" "} < /
+        div > { " " } <
+        /th>{" "} < /
+        tr > { " " } <
         /thead>{" "} <
         tbody > { " " } {
             tableDataState.map(
@@ -168,22 +172,31 @@ function DataTable() {
             )
         } { " " } <
         /tbody>{" "} <
-        tfoot className = "table-footer" >
+        tfoot >
+        <
+        tr >
+        <
+        th className = "footer-row" > < /th> <th className="footer-row"> </th > { " " } <
+        th className = "footer-row" > < /th> <th className="footer-row"> </th > { " " } <
+        th className = "footer-row" > < /th>{" "} <
+        div className = "table-footer" >
         <
         button disabled = { currentCount === 0 }
         onClick = { onGoBack } > { " " }
         Go Back { " " } <
         /button>{" "} <
         p > { " " } { currentCount }
-        /15{" "} <
-        /p>{" "} <
+        /15{" "} < /
+        p > { " " } <
         button disabled = { currentCount === 15 }
         onClick = { onNextPage } > { " " }
         Go Next { " " } <
-        /button>{" "} <
-        /tfoot>{" "} <
-        /table>{" "} <
-        /div>
+        /button>{" "} < /
+        div > { " " } <
+        /tr>{" "} < /
+        tfoot > { " " } <
+        /table>{" "} < /
+        div >
     );
 }
 
