@@ -24,11 +24,11 @@ function DataTable() {
     const paginator = (data) => {
         if (data.length > 4) {
             const filtered = data.slice(currentCount, currentCount + 5);
-            return filtered
+            return filtered;
         } else {
             return data;
         }
-    }
+    };
 
     const onSearch = (search) => {
         const filteredArr = tableData.filter((data) => {
@@ -47,7 +47,7 @@ function DataTable() {
             }
         });
 
-        const filterd = paginator(filteredArr)
+        const filterd = paginator(filteredArr);
         setTableDataState(filterd);
     };
 
@@ -85,6 +85,7 @@ function DataTable() {
 
     useEffect(() => {
         setReRender(!reRender);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [toggleSort, currentCount]);
 
     useEffect(() => {
@@ -106,8 +107,7 @@ function DataTable() {
         th >
         <
         input onChange = {
-            (e) => onSelectAll(e.target.checked)
-        }
+            (e) => onSelectAll(e.target.checked) }
         type = "checkbox" /
         >
         <
@@ -117,44 +117,41 @@ function DataTable() {
         div className = "idTitle" >
         <
         p > Id < /p> <button onClick={() => onSort("id")}> ⬇️ </button > { " " } <
-        /div>{" "} < /
-        th > { " " } <
+        /div>{" "} <
+        /th>{" "} <
         th >
         <
         div className = "idTitle" >
         <
         p > First Name < /p>{" "} <
         button onClick = {
-            () => onSort("firstName")
-        } > ⬇️ < /button>{" "} < /
-        div > { " " } <
+            () => onSort("firstName") } > ⬇️ < /button>{" "} <
+        /div>{" "} <
         /th>{" "} <
         th >
         <
         div className = "idTitle" > { " " } <
         p > Second Name < /p>{" "} <
         button onClick = {
-            () => onSort("lastName")
-        } > ⬇️ < /button>{" "} < /
-        div > { " " } <
+            () => onSort("lastName") } > ⬇️ < /button>{" "} <
+        /div>{" "} <
         /th>{" "} <
         th > { " " } <
         div className = "idTitle" >
         <
         p > Age < /p> <button onClick={() => onSort("age")}> ⬇️ </button > { " " } <
-        /div>{" "} < /
-        th > { " " } <
+        /div>{" "} <
+        /th>{" "} <
         th >
         <
         div className = "idTitle" >
         <
         p > Full Name < /p>{" "} <
         button onClick = {
-            () => onSort("fullName")
-        } > ⬇️ < /button>{" "} < /
-        div > { " " } <
-        /th>{" "} < /
-        tr > { " " } <
+            () => onSort("fullName") } > ⬇️ < /button>{" "} <
+        /div>{" "} <
+        /th>{" "} <
+        /tr>{" "} <
         /thead>{" "} <
         tbody > { " " } {
             tableDataState.map(
@@ -178,15 +175,15 @@ function DataTable() {
         Go Back { " " } <
         /button>{" "} <
         p > { " " } { currentCount }
-        /15{" "} < /
-        p > { " " } <
+        /15{" "} <
+        /p>{" "} <
         button disabled = { currentCount === 15 }
         onClick = { onNextPage } > { " " }
         Go Next { " " } <
-        /button>{" "} < /
-        tfoot > { " " } <
-        /table>{" "} < /
-        div >
+        /button>{" "} <
+        /tfoot>{" "} <
+        /table>{" "} <
+        /div>
     );
 }
 
