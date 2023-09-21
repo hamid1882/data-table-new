@@ -11,15 +11,15 @@ table {
   width: 100%;
   background-color: #101418;
   color: white;
+  border: 1px solid gray;
 }
 
 th {
-  border-bottom: 2px solid gray;
   padding: 1.5em;
 }
 
 tr {
-  border: 1px solid gray;
+  border-bottom: 2px solid gray;
   cursor: pointer;
 }
 
