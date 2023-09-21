@@ -1,75 +1,76 @@
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .table-container {
-    width: 70%;
-    margin: 5em auto;
+  width: 70%;
+  margin: 5em auto;
 }
 
 table {
-    width: 100%;
-    background-color: lightgray;
+  width: 100%;
+  background-color: #101418;
+  color: white;
 }
 
 th {
-    border-bottom: 2px solid gray;
-    padding: 1.5em;
+  border-bottom: 2px solid gray;
+  padding: 1.5em;
 }
 
 tr {
-    border: 1px solid gray;
-    cursor: pointer;
+  border: 1px solid gray;
+  cursor: pointer;
 }
 
 th {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 td {
-    padding: 1em;
+  padding: 1em;
 }
 
 input {
-    padding: 1em;
+  padding: 1em;
 }
 
 input[type='checkbox'] {
-    height: 1.5em;
-    width: 1.5em;
+  height: 1.5em;
+  width: 1.5em;
 }
 
 .search-bar {
-    margin: 1em;
+  margin: 1em;
 }
 
 .idTitle {
-    display: flex;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
-    cursor: pointer;
-    padding: 0.5em 1em;
-    border-radius: 0.3em;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
 }
 
 .selectedRow {
-    background-color: antiquewhite;
+  background-color: #2e3f4e;
 }
 
 .row:hover {
-    background-color: rgb(168, 160, 150);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .table-footer {
-    margin-top: 1em;
-    width: 100%;
-    display: flex;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }

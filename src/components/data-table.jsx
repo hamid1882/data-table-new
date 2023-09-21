@@ -1,203 +1,174 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "./search-bar";
-import { tableData } from "../data";
-import TableRow from "./table-row";
+import React, { useEffect, useState } from 'react';
+import SearchBar from './search-bar';
+import { tableData } from '../data';
+import TableRow from './table-row';
 
 function DataTable() {
-    const [tableDataState, setTableDataState] = useState([]);
-    const [reRender, setReRender] = useState(false);
-    const [toggleSort, setToggleSort] = useState(false);
-    const [currentCount, setcurrentCount] = useState(0);
+  const [tableDataState, setTableDataState] = useState([]);
+  const [reRender, setReRender] = useState(false);
+  const [toggleSort, setToggleSort] = useState(false);
+  const [currentCount, setcurrentCount] = useState(0);
 
-    const onSort = (sortBy) => {
-        setToggleSort(!toggleSort);
-        const sortedData = tableDataState.sort((a, b) => {
-            if (toggleSort) {
-                return a[sortBy] > b[sortBy] ? -1 : 0;
-            }
-            return a[sortBy] < b[sortBy] ? -1 : 0;
-        });
+  const onSort = (sortBy) => {
+    setToggleSort(!toggleSort);
+    const sortedData = tableDataState.sort((a, b) => {
+      if (toggleSort) {
+        return a[sortBy] > b[sortBy] ? -1 : 0;
+      }
+      return a[sortBy] < b[sortBy] ? -1 : 0;
+    });
 
-        setTableDataState(sortedData);
-    };
+    setTableDataState(sortedData);
+  };
 
-    const paginator = (data) => {
-        if (data.length > 4) {
-            const filtered = data.slice(currentCount, currentCount + 5);
-            return filtered;
-        } else {
-            return data;
-        }
-    };
+  const paginator = (data) => {
+    if (data.length > 4) {
+      const filtered = data.slice(currentCount, currentCount + 5);
+      return filtered;
+    } else {
+      return data;
+    }
+  };
 
-    const onSearch = (search) => {
-        const filteredArr = tableData.filter((data) => {
-            if (data.firstName.toLowerCase().includes(search.toLowerCase())) {
-                return data;
-            } else if (data.lastName.toLowerCase().includes(search.toLowerCase())) {
-                return data;
-            } else if (data.fullName.toLowerCase().includes(search.toLowerCase())) {
-                return data;
-            } else if (data.age.toString().includes(search)) {
-                return data;
-            } else if (data.id.toString().includes(search)) {
-                return data;
-            } else {
-                return null;
-            }
-        });
+  const onSearch = (search) => {
+    const filteredArr = tableData.filter((data) => {
+      if (data.firstName.toLowerCase().includes(search.toLowerCase())) {
+        return data;
+      } else if (data.lastName.toLowerCase().includes(search.toLowerCase())) {
+        return data;
+      } else if (data.fullName.toLowerCase().includes(search.toLowerCase())) {
+        return data;
+      } else if (data.age.toString().includes(search)) {
+        return data;
+      } else if (data.id.toString().includes(search)) {
+        return data;
+      } else {
+        return null;
+      }
+    });
 
-        const filterd = paginator(filteredArr);
-        setTableDataState(filterd);
-    };
+    const filterd = paginator(filteredArr);
+    setTableDataState(filterd);
+  };
 
-    const onSelect = (e) => {
-        const selectedUser = tableDataState.find((user) => user.id === e);
-        selectedUser.selected = !selectedUser.selected;
-        setTableDataState((prev) => {
-            return [...tableDataState];
-        });
-    };
+  const onSelect = (e) => {
+    const selectedUser = tableDataState.find((user) => user.id === e);
+    selectedUser.selected = !selectedUser.selected;
+    setTableDataState((prev) => {
+      return [...tableDataState];
+    });
+  };
 
-    const onSelectAll = (checked) => {
-        const updatedData = tableDataState.map((data) => {
-            return {
-                ...data,
-                selected: checked,
-            };
-        });
+  const onSelectAll = (checked) => {
+    const updatedData = tableDataState.map((data) => {
+      return {
+        ...data,
+        selected: checked,
+      };
+    });
 
-        setTableDataState(updatedData);
-    };
+    setTableDataState(updatedData);
+  };
 
-    const onNextPage = () => {
-        const updatedData = tableData.slice(currentCount, currentCount + 5);
-        setcurrentCount(currentCount + 5);
-        setTableDataState(updatedData);
-    };
+  const onNextPage = () => {
+    const updatedData = tableData.slice(currentCount, currentCount + 5);
+    setcurrentCount(currentCount + 5);
+    setTableDataState(updatedData);
+  };
 
-    const onGoBack = () => {
-        const updatedData = tableData.slice(currentCount - 5, currentCount);
+  const onGoBack = () => {
+    const updatedData = tableData.slice(currentCount - 5, currentCount);
 
-        setcurrentCount(currentCount - 5);
-        setTableDataState(updatedData);
-    };
+    setcurrentCount(currentCount - 5);
+    setTableDataState(updatedData);
+  };
 
-    useEffect(() => {
-        setReRender(!reRender);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [toggleSort, currentCount]);
+  useEffect(() => {
+    setReRender(!reRender);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggleSort, currentCount]);
 
-    useEffect(() => {
-        const slicedData = tableData.slice(0, 5);
-        setTableDataState(slicedData);
-    }, []);
+  useEffect(() => {
+    const slicedData = tableData.slice(0, 5);
+    setTableDataState(slicedData);
+  }, []);
 
-    return ( <
-        div className = "table-container" >
-        <
-        SearchBar onSearch = { onSearch }
-        />{" "} <
-        table >
-        <
-        thead >
-        <
-        tr >
-        <
-        th >
-        <
-        input onChange = {
-            (e) => onSelectAll(e.target.checked)
-        }
-        type = "checkbox" /
-        >
-        <
-        /th>{" "} <
-        th >
-        <
-        div className = "idTitle" >
-        <
-        p > Id < /p> <button onClick={() => onSort("id")}> ⬇️ </button > { " " } <
-        /div>{" "} < /
-        th > { " " } <
-        th >
-        <
-        div className = "idTitle" >
-        <
-        p > First Name < /p>{" "} <
-        button onClick = {
-            () => onSort("firstName")
-        } > ⬇️ < /button>{" "} < /
-        div > { " " } <
-        /th>{" "} <
-        th >
-        <
-        div className = "idTitle" > { " " } <
-        p > Second Name < /p>{" "} <
-        button onClick = {
-            () => onSort("lastName")
-        } > ⬇️ < /button>{" "} < /
-        div > { " " } <
-        /th>{" "} <
-        th > { " " } <
-        div className = "idTitle" >
-        <
-        p > Age < /p> <button onClick={() => onSort("age")}> ⬇️ </button > { " " } <
-        /div>{" "} < /
-        th > { " " } <
-        th >
-        <
-        div className = "idTitle" >
-        <
-        p > Full Name < /p>{" "} <
-        button onClick = {
-            () => onSort("fullName")
-        } > ⬇️ < /button>{" "} < /
-        div > { " " } <
-        /th>{" "} < /
-        tr > { " " } <
-        /thead>{" "} <
-        tbody > { " " } {
-            tableDataState.map(
-                ({ id, firstName, lastName, age, fullName, selected }) => ( <
-                    TableRow id = { id }
-                    firstName = { firstName }
-                    lastName = { lastName }
-                    age = { age }
-                    fullName = { fullName }
-                    selected = { selected }
-                    onSelect = { onSelect }
-                    />
-                )
-            )
-        } { " " } <
-        /tbody>{" "} <
-        tfoot >
-        <
-        tr >
-        <
-        th className = "footer-row" > < /th> <th className="footer-row"> </th > { " " } <
-        th className = "footer-row" > < /th> <th className="footer-row"> </th > { " " } <
-        th className = "footer-row" > < /th>{" "} <
-        div className = "table-footer" >
-        <
-        button disabled = { currentCount === 0 }
-        onClick = { onGoBack } > { " " }
-        Go Back { " " } <
-        /button>{" "} <
-        p > { " " } { currentCount }
-        /15{" "} < /
-        p > { " " } <
-        button disabled = { currentCount === 15 }
-        onClick = { onNextPage } > { " " }
-        Go Next { " " } <
-        /button>{" "} < /
-        div > { " " } <
-        /tr>{" "} < /
-        tfoot > { " " } <
-        /table>{" "} < /
-        div >
-    );
+  return (
+    <div className="table-container">
+      <SearchBar onSearch={onSearch} />{' '}
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <input onChange={(e) => onSelectAll(e.target.checked)} type="checkbox" />
+            </th>{' '}
+            <th>
+              <div className="idTitle">
+                <p> Id </p> <button onClick={() => onSort('id')}> ⬇️ </button>{' '}
+              </div>{' '}
+            </th>{' '}
+            <th>
+              <div className="idTitle">
+                <p> First Name </p> <button onClick={() => onSort('firstName')}> ⬇️ </button>{' '}
+              </div>{' '}
+            </th>{' '}
+            <th>
+              <div className="idTitle">
+                {' '}
+                <p> Second Name </p> <button onClick={() => onSort('lastName')}> ⬇️ </button>{' '}
+              </div>{' '}
+            </th>{' '}
+            <th>
+              {' '}
+              <div className="idTitle">
+                <p> Age </p> <button onClick={() => onSort('age')}> ⬇️ </button>{' '}
+              </div>{' '}
+            </th>{' '}
+            <th>
+              <div className="idTitle">
+                <p> Full Name </p> <button onClick={() => onSort('fullName')}> ⬇️ </button>{' '}
+              </div>{' '}
+            </th>{' '}
+          </tr>{' '}
+        </thead>{' '}
+        <tbody>
+          {' '}
+          {tableDataState.map(({ id, firstName, lastName, age, fullName, selected }) => (
+            <TableRow
+              id={id}
+              firstName={firstName}
+              lastName={lastName}
+              age={age}
+              fullName={fullName}
+              selected={selected}
+              onSelect={onSelect}
+            />
+          ))}{' '}
+        </tbody>{' '}
+        <tfoot>
+          <tr>
+            <th className="footer-row"> </th> <th className="footer-row"> </th> <th className="footer-row"> </th>{' '}
+            <th className="footer-row"> </th> <th className="footer-row"> </th>{' '}
+            <div className="table-footer">
+              <button disabled={currentCount === 0} onClick={onGoBack}>
+                {' '}
+                Go Back{' '}
+              </button>{' '}
+              <p>
+                {' '}
+                {currentCount}
+                /15{' '}
+              </p>{' '}
+              <button disabled={currentCount === 15} onClick={onNextPage}>
+                {' '}
+                Go Next{' '}
+              </button>{' '}
+            </div>{' '}
+          </tr>{' '}
+        </tfoot>{' '}
+      </table>{' '}
+    </div>
+  );
 }
 
 export default DataTable;
