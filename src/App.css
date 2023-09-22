@@ -1,5 +1,39 @@
-.App {
-  text-align: center;
+.table-container {
+  width: 70%;
+  margin: 5em auto;
+  height: 100vh;
+}
+
+table {
+  border: 1px solid gray;
+  width: 100%;
+  border-radius: 1em;
+}
+
+.table-head {
+  border: 2px solid black;
+}
+
+thead {
+  border: 2px solid black;
+}
+
+tr {
+  border: 1px solid gray;
+}
+
+th {
+  padding: 1em;
+}
+
+.table-head-row {
+  border: 1px solid gray;
+}
+
+.header-container {
+  display: flex;
+  gap: 1em;
+  align-items: center;
 }
 
 .table-container {
@@ -8,69 +42,174 @@
 }
 
 table {
+  border: 1px solid gray;
   width: 100%;
-  background-color: #101418;
-  color: white;
+  border-radius: 1em;
+}
+
+.table-head {
+  border: 2px solid black;
+}
+
+thead {
+  border: 2px solid black;
+}
+
+tr {
   border: 1px solid gray;
 }
 
 th {
-  padding: 1.5em;
-}
-
-tr {
-  border-bottom: 2px solid gray;
-  cursor: pointer;
-}
-
-th {
-  cursor: pointer;
-}
-
-td {
   padding: 1em;
 }
 
-input {
-  padding: 1em;
-}
-
-input[type='checkbox'] {
-  height: 1.5em;
-  width: 1.5em;
-}
-
-.search-bar {
-  margin: 1em;
-}
-
-.idTitle {
+.header-container {
   display: flex;
   gap: 1em;
-  justify-content: center;
   align-items: center;
-}
-
-button {
-  cursor: pointer;
-  padding: 0.5em 1em;
-  border-radius: 0.3em;
-}
-
-.selectedRow {
-  background-color: #2e3f4e;
 }
 
 .row:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: aliceblue;
+  cursor: pointer;
 }
 
-.table-footer {
-  margin-top: 1em;
+.selected-row {
+  background-color: lightblue;
+}
+
+.pagination-container {
+  display: flex;
+  gap: 2em;
+}
+
+button {
+  padding: 0.6em 2em;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: aliceblue;
+}
+
+.search-bar {
   width: 100%;
+  text-align: center;
+  margin: 2em auto;
+}
+
+input {
+  padding: 1.5em;
+  border: none;
+  border-radius: 1em;
+  width: 90%;
+  font-size: larger;
+}
+
+.input-container {
+  width: 40%;
+  margin: 2em auto;
+}
+
+.input-container {
+  height: 100vh;
+  margin-top: -10em;
+}
+
+.input-box {
+  background-color: white;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  border: 2px solid blue;
+  outline: none;
+}
+
+.movie-box {
   display: flex;
   gap: 1em;
+  color: white;
+  align-items: center;
+  width: fit-content;
+  flex-wrap: wrap;
+  align-items: end;
+}
+
+.movie-item {
+  padding: 0.2em;
+  display: flex;
+  background-color: blue;
+}
+
+.movie-input {
+  border: none;
+}
+
+.search-container {
+  background-color: white;
+  padding: 1em;
+  max-height: 40%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.search-item {
+  cursor: pointer;
+  padding: 0.4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-item-selected {
+  background-color: lightblue;
+}
+
+.search-item:hover {
+  background-color: lightblue;
+}
+
+input:focus {
+  outline: none;
+}
+
+.card-container {
+  height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.card {
+  width: 30%;
+  height: 65%;
+  background-color: aliceblue;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body {
+  height: 100%;
+}
+
+.card-image {
+  width: 100%;
+  height: 15em;
+}
+
+.card-footer {
+  display: flex;
+  padding: 1em;
+  font-size: x-large;
+  gap: 0.5em;
+  cursor: pointer;
 }

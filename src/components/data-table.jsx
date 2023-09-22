@@ -1,169 +1,168 @@
 import React, { useEffect, useState } from 'react';
+import { tableData, tableHeaders } from '../data';
 import SearchBar from './search-bar';
-import { tableData } from '../data';
-import TableRow from './table-row';
 
 function DataTable() {
-  const [tableDataState, setTableDataState] = useState([]);
-  const [reRender, setReRender] = useState(false);
-  const [toggleSort, setToggleSort] = useState(false);
-  const [currentCount, setcurrentCount] = useState(0);
+  const [tableDataState, setTableData] = useState([]);
+  const [isRender, setIsRender] = useState(false);
+  const [toggleSort, SetToggleSort] = useState(false);
+  const [currentCount, setCurrentCount] = useState({
+    start: 0,
+    end: 5,
+  });
 
-  const onSort = (sortBy) => {
-    setToggleSort(!toggleSort);
-    const sortedData = tableDataState.sort((a, b) => {
-      if (toggleSort) {
-        return a[sortBy] > b[sortBy] ? -1 : 0;
-      }
-      return a[sortBy] < b[sortBy] ? -1 : 0;
+  const handleSelectRow = (id) => {
+    const selectedRow = tableDataState.find((user) => user.id === id);
+    selectedRow.selected = !selectedRow.selected;
+    setTableData(tableDataState);
+    setIsRender(!isRender);
+  };
+
+  const handleSelectAll = (e) => {
+    const updatedData = tableDataState.map((data) => {
+      return {
+        ...data,
+        selected: e.target.checked,
+      };
     });
 
-    setTableDataState(sortedData);
+    setTableData(updatedData);
   };
 
-  const paginator = (data) => {
-    if (data.length > 4) {
-      const filtered = data.slice(currentCount, currentCount + 5);
-      return filtered;
-    } else {
-      return data;
-    }
+  const handleSortData = (sortBy) => {
+    SetToggleSort(!toggleSort);
+    const sortedData = tableDataState.sort((a, b) => {
+      if (toggleSort) {
+        return a[sortBy] > b[sortBy] ? 0 : -1;
+      } else {
+        return a[sortBy] < b[sortBy] ? 0 : -1;
+      }
+    });
+    setIsRender(!isRender);
+    setTableData(sortedData);
   };
 
-  const onSearch = (search) => {
-    const filteredArr = tableData.filter((data) => {
-      if (data.firstName.toLowerCase().includes(search.toLowerCase())) {
-        return data;
-      } else if (data.lastName.toLowerCase().includes(search.toLowerCase())) {
-        return data;
-      } else if (data.fullName.toLowerCase().includes(search.toLowerCase())) {
-        return data;
-      } else if (data.age.toString().includes(search)) {
-        return data;
-      } else if (data.id.toString().includes(search)) {
-        return data;
+  const handleGoBack = () => {
+    setCurrentCount({
+      start: currentCount.start - 5,
+      end: currentCount.end - 5,
+    });
+  };
+
+  const handleGoNext = () => {
+    setCurrentCount({
+      start: currentCount.start + 5,
+      end: currentCount.end + 5,
+    });
+  };
+
+  const handleSearch = (query) => {
+    const filteredData = tableData.filter((user) => {
+      if (user.id.toString().includes(query)) {
+        return user;
+      } else if (user.firstName.toLowerCase().includes(query)) {
+        return user;
+      } else if (user.lastName.toLowerCase().includes(query)) {
+        return user;
+      } else if (user.fullName.toLowerCase().includes(query)) {
+        return user;
+      } else if (user.age.toString().toLowerCase().includes(query)) {
+        return user;
       } else {
         return null;
       }
     });
 
-    const filterd = paginator(filteredArr);
-    setTableDataState(filterd);
+    handlePagination(filteredData);
   };
 
-  const onSelect = (e) => {
-    const selectedUser = tableDataState.find((user) => user.id === e);
-    selectedUser.selected = !selectedUser.selected;
-    setTableDataState((prev) => {
-      return [...tableDataState];
-    });
-  };
-
-  const onSelectAll = (checked) => {
-    const updatedData = tableDataState.map((data) => {
-      return {
-        ...data,
-        selected: checked,
-      };
-    });
-
-    setTableDataState(updatedData);
-  };
-
-  const onNextPage = () => {
-    const updatedData = tableData.slice(currentCount, currentCount + 5);
-    setcurrentCount(currentCount + 5);
-    setTableDataState(updatedData);
-  };
-
-  const onGoBack = () => {
-    const updatedData = tableData.slice(currentCount - 5, currentCount);
-
-    setcurrentCount(currentCount - 5);
-    setTableDataState(updatedData);
+  const handlePagination = (data) => {
+    const slicedData = data.slice(currentCount.start, currentCount.end);
+    setTableData(slicedData);
   };
 
   useEffect(() => {
-    setReRender(!reRender);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toggleSort, currentCount]);
+    handlePagination(tableData);
+    // eslint-disable-next-line
+  }, [currentCount]);
 
   useEffect(() => {
-    const slicedData = tableData.slice(0, 5);
-    setTableDataState(slicedData);
-  }, []);
+    setIsRender(!isRender);
+  }, [isRender]);
 
   return (
     <div className="table-container">
-      <SearchBar onSearch={onSearch} />{' '}
+      <SearchBar handleSearch={handleSearch} />{' '}
       <table>
-        <thead>
-          <tr>
+        <thead className="table-head">
+          <tr className="table-head-row">
             <th>
-              <input onChange={(e) => onSelectAll(e.target.checked)} type="checkbox" />
+              <input onChange={handleSelectAll} type="checkbox" />
             </th>{' '}
-            <th>
-              <div className="idTitle">
-                <p> Id </p> <button onClick={() => onSort('id')}> ⬇️ </button>{' '}
-              </div>{' '}
-            </th>{' '}
-            <th>
-              <div className="idTitle">
-                <p> First Name </p> <button onClick={() => onSort('firstName')}> ⬇️ </button>{' '}
-              </div>{' '}
-            </th>{' '}
-            <th>
-              <div className="idTitle">
-                {' '}
-                <p> Second Name </p> <button onClick={() => onSort('lastName')}> ⬇️ </button>{' '}
-              </div>{' '}
-            </th>{' '}
-            <th>
-              {' '}
-              <div className="idTitle">
-                <p> Age </p> <button onClick={() => onSort('age')}> ⬇️ </button>{' '}
-              </div>{' '}
-            </th>{' '}
-            <th>
-              <div className="idTitle">
-                <p> Full Name </p> <button onClick={() => onSort('fullName')}> ⬇️ </button>{' '}
-              </div>{' '}
-            </th>{' '}
+            {tableHeaders.map(({ id, name, key }) => (
+              <th key={id}>
+                <div className="header-container">
+                  <p> {name.toUpperCase()} </p>{' '}
+                  <button onClick={() => handleSortData(key)}> ⬇️ </button>{' '}
+                </div>{' '}
+              </th>
+            ))}{' '}
           </tr>{' '}
         </thead>{' '}
         <tbody>
           {' '}
-          {tableDataState.map(({ id, firstName, lastName, age, fullName, selected }) => (
-            <TableRow
-              id={id}
-              firstName={firstName}
-              lastName={lastName}
-              age={age}
-              fullName={fullName}
-              selected={selected}
-              onSelect={onSelect}
-            />
-          ))}{' '}
+          {tableDataState.map(
+            ({ id, firstName, lastName, age, fullName, selected }) => (
+              <tr className={`row ${selected ? 'selected-row' : ''}`}>
+                {' '}
+                <td>
+                  <input
+                    checked={selected}
+                    onChange={() => handleSelectRow(id)}
+                    type="checkbox"
+                  />
+                </td>{' '}
+                <td>
+                  <p> {id} </p>{' '}
+                </td>{' '}
+                <td>
+                  <p> {firstName} </p>{' '}
+                </td>{' '}
+                <td>
+                  <p> {lastName} </p>{' '}
+                </td>{' '}
+                <td>
+                  <p> {age} </p>{' '}
+                </td>{' '}
+                <td>
+                  <p> {fullName} </p>{' '}
+                </td>{' '}
+              </tr>
+            )
+          )}{' '}
         </tbody>{' '}
         <tfoot>
           <tr>
-            <th className="footer-row"> </th> <th className="footer-row"> </th> <th className="footer-row"> </th>{' '}
-            <th className="footer-row"> </th> <th className="footer-row"> </th>{' '}
-            <div className="table-footer">
-              <button disabled={currentCount === 0} onClick={onGoBack}>
-                {' '}
-                Go Back{' '}
-              </button>{' '}
-              <p>
-                {' '}
-                {currentCount}
-                /15{' '}
-              </p>{' '}
-              <button disabled={currentCount === 15} onClick={onNextPage}>
-                {' '}
-                Go Next{' '}
-              </button>{' '}
-            </div>{' '}
+            <th> </th> <th> </th> <th> </th> <th> </th> <th> </th>{' '}
+            <th>
+              <div className="pagination-container">
+                <button
+                  disabled={currentCount.start === 0}
+                  onClick={handleGoBack}
+                >
+                  {' '}
+                  Back{' '}
+                </button>
+                1{' '}
+                <button
+                  disabled={currentCount.end === tableData.length}
+                  onClick={handleGoNext}
+                >
+                  {' '}
+                  Next{' '}
+                </button>{' '}
+              </div>{' '}
+            </th>{' '}
           </tr>{' '}
         </tfoot>{' '}
       </table>{' '}

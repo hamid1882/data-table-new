@@ -1,9 +1,13 @@
 import React from 'react';
 
-function SearchBar({ onSearch }) {
+function SearchBar({ handleSearch }) {
   return (
     <div className="search-bar">
-      <input onChange={(e) => onSearch(e.target.value)} type="text" placeholder="Search for users" />
+      <h1> Search Users </h1>{' '}
+      <input
+        onChange={(e) => handleSearch(e.target.value)}
+        placeholder="Search Users"
+      />
     </div>
   );
 }
