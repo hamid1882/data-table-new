@@ -280,11 +280,11 @@ export const movies = [
   },
   {
     name: 'The Departed',
-    selected: false,
+    selected: true,
   },
   {
     name: 'Gladiator',
-    selected: false,
+    selected: true,
   },
   {
     name: 'Inglourious Basterds',
@@ -319,35 +319,23 @@ export const movies = [
     selected: false,
   },
   {
-    name: 'The Shawshank Redemption',
+    name: 'Pirates of the Caribbean: The Curse of the Black Pearl',
     selected: false,
   },
   {
-    name: 'Pulp Fiction',
+    name: 'The Notebook',
     selected: false,
   },
   {
-    name: 'The Godfather: Part II',
+    name: 'The Fault in Our Stars',
     selected: false,
   },
   {
-    name: 'The Dark Knight',
+    name: 'The Hunger Games',
     selected: false,
   },
   {
-    name: 'Fight Club',
-    selected: false,
-  },
-  {
-    name: 'Goodfellas',
-    selected: false,
-  },
-  {
-    name: 'The Matrix',
-    selected: false,
-  },
-  {
-    name: 'Seven Samurai',
+    name: 'The Maze Runner',
     selected: false,
   },
   {
@@ -363,31 +351,11 @@ export const movies = [
     selected: false,
   },
   {
-    name: 'The Silence of the Lambs',
-    selected: false,
-  },
-  {
     name: 'The Usual Suspects',
     selected: false,
   },
   {
     name: 'The Pianist',
-    selected: false,
-  },
-  {
-    name: 'The Departed',
-    selected: false,
-  },
-  {
-    name: 'The Lord of the Rings: The Return of the King',
-    selected: false,
-  },
-  {
-    name: 'The Green Mile',
-    selected: false,
-  },
-  {
-    name: 'American History X',
     selected: false,
   },
   {
@@ -395,71 +363,7 @@ export const movies = [
     selected: false,
   },
   {
-    name: 'The Lion King',
-    selected: false,
-  },
-  {
     name: 'The Shining',
-    selected: false,
-  },
-  {
-    name: 'The Avengers',
-    selected: false,
-  },
-  {
-    name: 'The Dark Knight Rises',
-    selected: false,
-  },
-  {
-    name: 'The Godfather: Part III',
-    selected: false,
-  },
-  {
-    name: 'The Sixth Sense',
-    selected: false,
-  },
-  {
-    name: 'The Social Network',
-    selected: false,
-  },
-  {
-    name: 'The Revenant',
-    selected: false,
-  },
-  {
-    name: 'La La Land',
-    selected: false,
-  },
-  {
-    name: 'Mad Max: Fury Road',
-    selected: false,
-  },
-  {
-    name: 'The Great Gatsby',
-    selected: false,
-  },
-  {
-    name: 'The Wolf of Wall Street',
-    selected: false,
-  },
-  {
-    name: 'The Shawshank Redemption',
-    selected: false,
-  },
-  {
-    name: 'Pulp Fiction',
-    selected: false,
-  },
-  {
-    name: 'The Godfather: Part II',
-    selected: false,
-  },
-  {
-    name: 'The Dark Knight',
-    selected: false,
-  },
-  {
-    name: 'Fight Club',
     selected: false,
   },
   {
@@ -467,39 +371,11 @@ export const movies = [
     selected: false,
   },
   {
-    name: 'The Matrix',
-    selected: false,
-  },
-  {
     name: 'Seven Samurai',
     selected: false,
   },
   {
-    name: 'City of God',
-    selected: false,
-  },
-  {
-    name: 'The Lord of the Rings: The Two Towers',
-    selected: false,
-  },
-  {
-    name: 'Se7en',
-    selected: false,
-  },
-  {
-    name: 'The Silence of the Lambs',
-    selected: false,
-  },
-  {
-    name: 'The Usual Suspects',
-    selected: false,
-  },
-  {
-    name: 'The Pianist',
-    selected: false,
-  },
-  {
-    name: 'The Departed',
+    name: 'American History X',
     selected: false,
   },
   {
@@ -511,7 +387,23 @@ export const movies = [
     selected: false,
   },
   {
-    name: 'American History X',
+    name: 'American Beauty',
+    selected: false,
+  },
+  {
+    name: 'The Departed',
+    selected: false,
+  },
+  {
+    name: 'The Social Network',
+    selected: false,
+  },
+  {
+    name: 'Interstellar',
+    selected: false,
+  },
+  {
+    name: 'The Revenant',
     selected: false,
   },
   {
