@@ -133,7 +133,7 @@ input {
   align-items: center;
   width: fit-content;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .movie-item {
