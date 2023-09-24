@@ -29,8 +29,11 @@ function CollapsableTable() {
             {foodDataState.map((data) => (
               <>
                 <tr style={{ padding: '1em', margin: '1em' }} key={data.id}>
-                  <td onClick={() => handleToggleRow(data.id)}>
-                    {!data.selected ? '↓' : '↑'}
+                  <td
+                    className={`toggle-icon ${data.selected ? 'selected' : ''}`}
+                    onClick={() => handleToggleRow(data.id)}
+                  >
+                    ↓
                   </td>
                   <td>{data.desert}</td>
                   <td>{data.calories}</td>

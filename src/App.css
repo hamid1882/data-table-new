@@ -205,3 +205,12 @@ table {
     border-radius: 1em;
     border-collapse: collapse;
 }
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.selected {
+    transform: rotate(180deg);
+}
