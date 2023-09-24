@@ -4,7 +4,6 @@ import SearchBar from './search-bar';
 
 function DataTable() {
   const [tableDataState, setTableData] = useState([]);
-  const [isRender, setIsRender] = useState(false);
   const [toggleSort, SetToggleSort] = useState(false);
   const [currentCount, setCurrentCount] = useState({
     start: 0,
@@ -14,8 +13,7 @@ function DataTable() {
   const handleSelectRow = (id) => {
     const selectedRow = tableDataState.find((user) => user.id === id);
     selectedRow.selected = !selectedRow.selected;
-    setTableData(tableDataState);
-    setIsRender(!isRender);
+    setTableData([...tableDataState]);
   };
 
   const handleSelectAll = (e) => {
@@ -38,8 +36,8 @@ function DataTable() {
         return a[sortBy] < b[sortBy] ? 0 : -1;
       }
     });
-    setIsRender(!isRender);
-    setTableData(sortedData);
+
+    setTableData([...sortedData]);
   };
 
   const handleGoBack = () => {
@@ -85,10 +83,6 @@ function DataTable() {
     handlePagination(tableData);
     // eslint-disable-next-line
   }, [currentCount]);
-
-  useEffect(() => {
-    setIsRender(!isRender);
-  }, [isRender]);
 
   return (
     <div className="table-container">

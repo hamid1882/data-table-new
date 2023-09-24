@@ -1,0 +1,54 @@
+.drawer-container {
+    height: 100vh;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-bar {
+    background-color: rgba(13, 105, 105, 0.6);
+    color: white;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    gap: 3em;
+    padding: 0 2em;
+}
+
+.main {
+    display: flex;
+    height: 100%;
+    background-color: white;
+}
+
+.drawer {
+    max-width: 10em;
+    min-width: fit-content;
+    width: fit-content;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    overflow-y: auto;
+    color: white;
+}
+
+.nav-items {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0 1em;
+}
+
+.nav-items:first-child {
+    color: white;
+}
+
+.nav-items:hover {
+    color: white;
+}
+
+.content {
+    padding: 1em;
+}

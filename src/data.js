@@ -652,3 +652,21 @@ export const foodData = [
     ],
   },
 ];
+
+export const navbarItems = [
+  { title: 'Home', icon: '🏠' },
+  { title: 'Profile', icon: '👤' },
+  { title: 'Settings', icon: '⚙️' },
+  { title: 'Logout', icon: '🚪' },
+  { title: 'Dashboard', icon: '📊' },
+  { title: 'Messages', icon: '💬' },
+  { title: 'Notifications', icon: '🔔' },
+  { title: 'Calendar', icon: '📅' },
+  { title: 'Contacts', icon: '📞' },
+  { title: 'Tasks', icon: '📝' },
+  { title: 'New Item', icon: '➕' },
+  { title: 'Edit Item', icon: '🖊️' },
+  { title: 'Delete Item', icon: '🗑️' },
+  { title: 'Save Item', icon: '💾' },
+  { title: 'Cancel', icon: '❌' },
+];
