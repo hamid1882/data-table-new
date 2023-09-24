@@ -36,39 +36,6 @@ th {
     align-items: center;
 }
 
-.table-container {
-    width: 70%;
-    margin: 5em auto;
-}
-
-table {
-    border: 1px solid gray;
-    width: 100%;
-    border-radius: 1em;
-}
-
-.table-head {
-    border: 2px solid black;
-}
-
-thead {
-    border: 2px solid black;
-}
-
-tr {
-    border: 1px solid gray;
-}
-
-th {
-    padding: 1em;
-}
-
-.header-container {
-    display: flex;
-    gap: 1em;
-    align-items: center;
-}
-
 .row:hover {
     background-color: aliceblue;
     cursor: pointer;
@@ -223,4 +190,18 @@ input:focus {
     text-align: center;
     padding-top: 10em;
     background-color: lightgoldenrodyellow;
+}
+
+.table th,
+.table td {
+    border: 1px solid black;
+    padding: 8px;
+    border-spacing: 0;
+}
+
+table {
+    border: 1px solid gray;
+    width: 100%;
+    border-radius: 1em;
+    border-collapse: collapse;
 }
