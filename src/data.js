@@ -670,3 +670,46 @@ export const navbarItems = [
   { title: 'Save Item', icon: '💾' },
   { title: 'Cancel', icon: '❌' },
 ];
+
+export const fruits = [
+  {
+    fruit: 'Apple',
+    icon: '🍎',
+  },
+  {
+    fruit: 'Banana',
+    icon: '🍌',
+  },
+  {
+    fruit: 'Cherry',
+    icon: '🍒',
+  },
+  {
+    fruit: 'Grapes',
+    icon: '🍇',
+  },
+  {
+    fruit: 'Kiwi',
+    icon: '🥝',
+  },
+  {
+    fruit: 'Lemon',
+    icon: '🍋',
+  },
+  {
+    fruit: 'Orange',
+    icon: '🍊',
+  },
+  {
+    fruit: 'Peach',
+    icon: '🍑',
+  },
+  {
+    fruit: 'Pear',
+    icon: '🍐',
+  },
+  {
+    fruit: 'Watermelon',
+    icon: '🍉',
+  },
+];
